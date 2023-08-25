@@ -1,0 +1,20 @@
+[
+    {
+        "Component ID": "26466",
+        "Component Name": "Basic Wall",
+        "Category": "Walls",
+        "Quantity":"1"
+    },
+    {
+        "Component ID": "26467",
+        "Component Name": "Curtain Wall",
+        "Category": "Walls",
+        "Quantity":"1"
+    },
+    {
+        "Component ID": "29875",
+        "Component Name": "Compound Ceiling",
+        "Category": "Ceilings",
+        "Quantity":"1"
+    }
+]

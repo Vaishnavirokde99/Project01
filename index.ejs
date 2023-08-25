@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+
+   
+    <title>Project Name</title>
+</head><body>
+<div id="container">
+    <div id="header">
+        <h>Project name</h>
+    </div>
+    <div id="viewer"></div>
+    <div id="sidebar">
+        
+        <ul class="nav nav-pills nav-fill mb-3" id="sidebar-pills" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="performance-tab" data-toggle="pill" href="#performance" role="tab" aria-controls="performance" aria-selected="true">Performance</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="maintenance-tab" data-toggle="pill" href="#maintenance" role="tab" aria-controls="maintenance" aria-selected="false">Maintenance</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="procurement-tab" data-toggle="pill" href="#procurement" role="tab" aria-controls="procurement" aria-selected="false">Procurement</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="sidebar-pills-content">
+            <div class="tab-pane fade show active" id="performance" role="tabpanel" aria-labelledby="performance-tab">
+                <ul class="nav nav-tabs mb-3 nav-fill" id="performance-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="performance-general-tab" data-toggle="tab" href="#performance-general" role="tab" aria-controls="performance-general" aria-selected="false">General</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="performance-part-tab" data-toggle="tab" href="#performance-part" role="tab" aria-controls="performance-part" aria-selected="true">Part</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="procurement-tabs-content">
+                    <div class="tab-pane fade <%= activeTab === 'performance-general' ? 'active' : '' %>" id="performance-general" role="tabpanel" aria-labelledby="performance-general-tab">
+                        <h5>Engine Speed</h5> 
+                        <h5>Engine Vibrations</h5>
+                        <div class="alert alert-secondary">Select a single part in the 3D view</div>
+                        <h5>Current Temperature</h5>
+                        <h5>Temperature History</h5>
+                        <form id="temperature-alert-form">
+                            <h5>Temperature Alert</h5>
+                            <div class="row mb-2">
+                                <label class="col-sm-2 col-form-label" for="temperature-alert-part">Part #</label>
+                                <div class="col-sm-2">
+                                    <input class="form-control-plaintext" id="temperature-alert-part" type="text" readonly="" value="123">
+                                </div>
+                                <label class="col-sm-4 col-form-label" for="temperature-alert-max">Max Temp [C]</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" id="temperature-alert-max" type="text" value="">
+                                </div>
+                            </div>
+                            <button class="btn btn-primary mr-2">Set</button>
+                            <button class="btn btn-secondary">Clear</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="maintenance" role="tabpanel" aria-labelledby="maintenance-tab">
+                <ul class="nav nav-tabs mb-3 nav-fill" id="maintenance-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link " id="maintenance-revisions-tab" data-toggle="tab" href="#maintenance-revisions" role="tab" aria-controls="maintenance-revisions" aria-selected="true">Revisions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="maintenance-issues-tab" data-toggle="tab" href="#maintenance-issues" role="tab" aria-controls="maintenance-issues" aria-selected="false">Issues</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="maintenance-statistics-tab" data-toggle="tab" href="#maintenance-statistics" role="tab" aria-controls="maintenance-statistics" aria-selected="false">Statistics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="maintenance-instructions-tab" data-toggle="tab" href="#maintenance-instructions" role="tab" aria-controls="maintenance-instructions" aria-selected="false">Docs</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="maintenance-tabs-content">
+                    <div class="tab-pane fade show active <%= activeTab === 'maintenance-revisions' ? 'active' : '' %>" id="maintenance-revisions" role="tabpanel" aria-labelledby="maintenance-revisions-tab">
+                        <h5>Revision History</h5>
+                        <table class="table ">
+                            <thead>
+                              <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Part</th>
+                                <th scope="col">Supplier</th>
+                                <th scope="col">Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">04/08/23</th>
+                                <td>1124</td>
+                                <td>Foo Inc.</td>
+                                <td>$ 98.5</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">05/08/23</th>
+                                <td>1709</td>
+                                <td>Baz GmbH.</td>
+                                <td>$ 79.56</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">15/07/23</th>
+                                <td>1389</td>
+                                <td>Bar Inc.</td>
+                                <td>$ 90.34</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">12/07/23</th>
+                                <td>78.45</td>
+                                <td>Foo Inc.</td>
+                                <td>$ 59.12</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">24/07/23</th>
+                                <td>1117</td>
+                                <td>Baz GmbH</td>
+                                <td>$ 89.56</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <nav>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                  <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                      <span aria-hidden="true">&laquo;</span>
+                                      <span class="sr-only">Previous</span>
+                                    </a>
+                                  </li>
+                                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                  <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                      <span aria-hidden="true">&raquo;</span>
+                                      <span class="sr-only">Next</span>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </nav>
+                            <h5>New Revision</h5>
+                            <form action="/signup" method="post" revision-form>
+                                
+                                    <div class="form-group">
+                                      <label for="exampleInputStatus">Status</label>
+                                      <input type="text" class="form-control" name="Status" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Status">
+                                      
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleInputAuthorName">Author Name</label>
+                                      <input type="text" class="form-control" name="Author" id="exampleInputPassword1" placeholder="Author name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputRecommended">Recommended</label>
+                                        <input type="text" class="form-control" name="Recommended" id="exampleInputPassword1" placeholder="Recommended">
+                                      </div>
+                                    
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                  </form>
+                                  
+                            <div class="modal fade" id="revision-modal" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <p>...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade"  id="maintenance-issues" role="tabpanel" aria-labelledby="maintenance-issues-tab">
+                        <h5 id="existing-issue">Existing Issues</h5>
+                        <table class="table table-hover table-sm" id="issues">
+                            <thead>
+                                <tr>
+                                    
+                                    <th class="table-data" scope="col">Status</th>
+                                    <th class="table-data" scope="col">Author</th>
+                                    <th class="table-data" scope="col">Recommended</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% newData.forEach(item => { %>
+                                    <tr>
+                                        <td class="table-data"><%= item.Status %></td>
+                                        <td class="table-data"><%= item.Author %></td>
+                                        <td class="table-data"><%= item.Recommended %></td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                        <nav>
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <h5>New Issue</h5>
+                        <form id="issue-form">
+                            <div class="row mb-2">
+                                <label class="col-sm-2 col-form-label" for="issue-part">Part #</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control-plaintext" id="issue-part" type="text" readonly="" value="123">
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <label class="col-sm-2 col-form-label" for="issue-title">Type</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control form-control-sm" id="issue-title">
+                                        <option>Minor</option>
+                                        <option>Major</option>
+                                        <option>Urgent</option>
+                                        <option>Critical</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <label class="col-sm-2 col-form-label" for="issue-author">Author</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control form-control-sm" id="issue-author">
+                                        <option>Sherbaum Valery</option>
+                                        <option>Erenburg Vladimir</option>
+                                        <option>John Golley</option>
+                                        <option>Wilbert Awdry</option>
+                                        <option>Bill Gunston</option>
+                                        <option>Klaus Hünecke</option>
+                                        <option>Irwin E. Treager</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <label class="col-sm-1 col-form-label" for="issue-position-x">X</label><div class="col-sm-3">
+                                    <input class="form-control" id="issue-position-x" type="text" value="0.0">
+                                </div>
+                                <label class="col-sm-1 col-form-label" for="issue-position-y">Y</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control" id="issue-position-y" type="text" value="0.0">
+                                </div>
+                                <label class="col-sm-1 col-form-label" for="issue-position-z">Z</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control" id="issue-position-z" type="text" value="0.0">
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-block" type="submit">Submit</button>
+                        </form>
+                        <div class="modal fade" id="issue-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <p>...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade"  id="maintenance-statistics" role="tabpanel" aria-labelledby="maintenance-statistics-tab">
+                        <div class="alert alert-secondary">Select a single part in the 3D view</div>
+                        <h5>Issues Reported in Last 6 Months</h5>
+                        <table class="table table-hover table-sm" id="issues">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Component Id</th>
+                                    <th scope="col">Component Name</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Quantity</th>
+                                </tr>
+                            </thead>
+                                    <tbody>
+                                        <% jsonDataList.forEach(function(item) { %>
+                                            <tr>
+                                                <td><%= item.Component_ID %></td>
+                                                <td><%= item.Component_Name %></td>
+                                                <td><%= item.Category %></td>
+                                                <td><%= item.Quantity %></td>
+                                            </tr>
+                                        <% }); %>
+                                    </tbody>
+                           
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="maintenance-instructions" role="tabpanel" aria-labelledby="maintenance-instructions-tab">
+                        <div class="alert alert-secondary">Select a single part in the 3D view</div>
+                        <h5>Maintenance Instructions</h5>
+                        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="procurement" role="tabpanel" aria-labelledby="procurement-tab">
+                        <ul class="nav nav-tabs mb-3 nav-fill" id="procurement-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="procurement-purchases-tab" data-toggle="tab" href="#procurement-purchases" role="tab" aria-controls="procurement-purchases" aria-selected="false">Purchases</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="procurement-stats-tab" data-toggle="tab" href="#procurement-stats" role="tab" aria-controls="procurement-stats" aria-selected="true">Statistics</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="procurement-tabs-content">
+                            <div class="tab-pane fade show active" id="procurement-purchases" role="tabpanel" aria-labelledby="procurement-purchases-tab">
+                                <h5>Purchase History</h5>
+                                <table class="table ">
+                            <thead>
+                              <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Part</th>
+                                <th scope="col">Supplier</th>
+                                <th scope="col">Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">04/08/23</th>
+                                <td>1124</td>
+                                <td>Foo Inc.</td>
+                                <td>$ 98.5</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">05/08/23</th>
+                                <td>1709</td>
+                                <td>Baz GmbH.</td>
+                                <td>$ 79.56</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">15/07/23</th>
+                                <td>1389</td>
+                                <td>Bar Inc.</td>
+                                <td>$ 90.34</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">12/07/23</th>
+                                <td>78.45</td>
+                                <td>Foo Inc.</td>
+                                <td>$ 59.12</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">24/07/23</th>
+                                <td>1117</td>
+                                <td>Baz GmbH</td>
+                                <td>$ 89.56</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <nav>
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <h5>New Purchase</h5>
+                        <form id="purchase-form">
+                            <div class="row">
+                                <label class="col-sm-2 col-form-label" for="purchase-part">Part #</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control-plaintext" id="purchase-part" type="text" readonly="" value="123">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2 col-form-label" for="purchase-supplier">Supplier</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control form-control-sm" id="purchase-supplier">
+                                        <option>Foo Inc.</option>
+                                        <option>Bar Ltd.</option>
+                                        <option>Baz GmbH.</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-2 col-form-label" for="purchase-price">Price</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control-plaintext" id="purchase-price" type="text" readonly="" value="$0.00">
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-block" type="submit">Submit</button>
+                        </form>
+                        <div class="modal fade" id="purchase-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <p>...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="procurement-stats" role="tabpanel" aria-labelledby="procurement-stats-tab">
+                        <div class="alert alert-secondary">Select a single part in the 3D view</div>
+                        <h5>Part price over time</h5>
+                        <canvas id="purchase-stats" width="100%"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                          <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+                          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+                          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+                          
+                        </div>
+                        
+                        <script>
+                      
+                        fetch("/get-data")
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log("Fetched component data:", data);
+                        
+                                const issuesTableBody = document.querySelector("#maintenance-issues tbody");
+                                issuesTableBody.innerHTML = "";
+                        
+                                data.forEach(item => {
+                                    const row = document.createElement("tr");
+                                    row.innerHTML = `
+                                        <td>${item.Status}</td>
+                                        <td>${item.Author}</td>
+                                        <td>${item.Recommended}</td>
+                                    `;
+                                    issuesTableBody.appendChild(row);
+                                });
+                            })
+                            .catch(error => console.error(error));
+                        
+                       
+                        fetch("/json-data")
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log("Fetched component data:", data);
+                        
+                                const statisticsTableBody = document.querySelector("#maintenance-statistics tbody");
+                                statisticsTableBody.innerHTML = ""; 
+                        
+                                data.forEach(item => {
+                                    const row = document.createElement("tr");
+                                    row.innerHTML = `
+                                        <td>${item.ComponentId}</td>
+                                        <td>${item.ComponentName}</td>
+                                        <td>${item.Category}</td>
+                                        <td>${item.Quantity}</td>
+                                    `;
+                                    statisticsTableBody.appendChild(row);
+                                });
+                            })
+                            .catch(error => console.error(error));
+                        
+                        
+                        
+
+                    </script>    
+                        
+                    </body>
